@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B5E300C2C3456D100FB9879 /* SignInAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E300B2C3456D100FB9879 /* SignInAppleHelper.swift */; };
 		9B860C3D2C2A055D00F7330B /* FirebasePracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B860C3C2C2A055D00F7330B /* FirebasePracticeApp.swift */; };
 		9B860C3F2C2A055D00F7330B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B860C3E2C2A055D00F7330B /* ContentView.swift */; };
 		9B860C412C2A055E00F7330B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B860C402C2A055E00F7330B /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B5E300A2C3453FC00FB9879 /* FirebasePractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirebasePractice.entitlements; sourceTree = "<group>"; };
+		9B5E300B2C3456D100FB9879 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
 		9B860C392C2A055D00F7330B /* FirebasePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B860C3C2C2A055D00F7330B /* FirebasePracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePracticeApp.swift; sourceTree = "<group>"; };
 		9B860C3E2C2A055D00F7330B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		9B860C3B2C2A055D00F7330B /* FirebasePractice */ = {
 			isa = PBXGroup;
 			children = (
+				9B5E300A2C3453FC00FB9879 /* FirebasePractice.entitlements */,
 				9B860C642C2F86C400F7330B /* Info.plist */,
 				9B860C3C2C2A055D00F7330B /* FirebasePracticeApp.swift */,
 				9B860C3E2C2A055D00F7330B /* ContentView.swift */,
@@ -115,6 +119,7 @@
 				9B860C5D2C2C8A6700F7330B /* SettingsView.swift */,
 				9B860C5B2C2C866200F7330B /* RootView.swift */,
 				9B860C572C2B160700F7330B /* SigninEmailView.swift */,
+				9B5E300B2C3456D100FB9879 /* SignInAppleHelper.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				9B860C562C2B14E700F7330B /* AuthenticationView.swift in Sources */,
 				9B860C5A2C2B187F00F7330B /* AuthenticationManager.swift in Sources */,
 				9B860C682C2F8BCA00F7330B /* Utilities.swift in Sources */,
+				9B5E300C2C3456D100FB9879 /* SignInAppleHelper.swift in Sources */,
 				9B860C582C2B160700F7330B /* SigninEmailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FirebasePractice/FirebasePractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebasePractice/Preview Content\"";
@@ -370,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FirebasePractice/FirebasePractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FirebasePractice/Preview Content\"";
