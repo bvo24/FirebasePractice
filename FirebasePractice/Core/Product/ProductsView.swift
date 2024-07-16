@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 @MainActor
 final class ProductsViewModel: ObservableObject {
@@ -13,6 +14,7 @@ final class ProductsViewModel: ObservableObject {
     @Published private(set) var products : [Product] = []
     @Published var selectedFilter : FilterOption? = nil
     @Published var selectedCategory : CategoryOption? = nil
+    private var lastDocument : DocumentSnapshot? = nil
     
 //    func getAllProducts() async throws{
 //        self.products = try await ProductsManager.shared.getAllProducts()
@@ -37,19 +39,10 @@ final class ProductsViewModel: ObservableObject {
     }
     
     func filterSelected(option : FilterOption)async throws {
-//        switch option{
-//        case .noFilter:
-//            self.products = try await ProductsManager.shared.getAllProducts()
-//            break
-//            
-//        case .priceHigh:
-//            self.products = try await ProductsManager.shared.getAllProductsSortedByPrice(descending: true)
-//            break
-//        case .priceLow:
-//            self.products = try await ProductsManager.shared.getAllProductsSortedByPrice(descending: false)
-//            break
-//        }
+
         self.selectedFilter = option
+        self.products = []
+        self.lastDocument = nil
         self.getProducts()
         
     }
@@ -79,6 +72,8 @@ final class ProductsViewModel: ObservableObject {
 //            break
 //        }
         self.selectedCategory = option
+        self.products = []
+        self.lastDocument = nil
         self.getProducts()
         
         
@@ -89,9 +84,41 @@ final class ProductsViewModel: ObservableObject {
     
     func getProducts(){
         Task{
-            self.products = try await ProductsManager.shared.getAllProducts(pricedescending: selectedFilter?.priceDescending, forCategory: selectedCategory?.categoryKey)
+            let (newProducts, lastDocument) = try await ProductsManager.shared.getAllProducts(pricedescending: selectedFilter?.priceDescending, forCategory: selectedCategory?.categoryKey, count: 10, lastDocument: lastDocument)
+            
+            self.products.append(contentsOf: newProducts)
+            
+            if let lastDocument{
+                self.lastDocument = lastDocument
+            }
+            
         }
+        
+                    
+        
     }
+    
+    
+    
+//    func getProductsByRating(){
+//        Task{
+//            
+////            let newProducts = try await ProductsManager.shared.getProductsByRating(count: 3, lastRating: self.products.last?.rating)
+//            
+//            let (newProducts, lastDocument) = try await ProductsManager.shared.getProductsByRating(count: 3, lastDocument: lastDocument )
+//                
+//            self.products.append(contentsOf: newProducts)
+//            self.lastDocument = lastDocument
+//        }
+//    }
+//    
+//    func getProductsCount(){
+//        Task{
+//            let count = try await ProductsManager.shared.getAllProductsCount()
+//            print("All product count \(count)")
+//            
+//        }
+//    }
     
     
     
@@ -108,9 +135,18 @@ struct ProductsView: View {
         
         List{
             
+ 
             ForEach(viewModel.products){ product in
                 
                 ProductCellView(product: product)
+                
+                if product ==  viewModel.products.last{
+                    ProgressView()
+                        .onAppear{
+                            viewModel.getProducts()
+                        }
+                }
+                
                 
             }
             
@@ -128,6 +164,7 @@ struct ProductsView: View {
                             }
                             
                         }
+                        
                         
                     }
                     
@@ -152,6 +189,7 @@ struct ProductsView: View {
             
         }
         .task{
+//            viewModel.getProductsCount()
             viewModel.getProducts()
         }
     }
