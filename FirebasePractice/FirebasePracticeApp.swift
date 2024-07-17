@@ -16,9 +16,9 @@ struct FirebasePracticeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack{
+//            NavigationStack{
                 RootView()
-            } 
+//            } 
         }
     }
 }

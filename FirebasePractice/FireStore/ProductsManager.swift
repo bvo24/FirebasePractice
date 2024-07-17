@@ -31,21 +31,21 @@ final class ProductsManager{
     
 //    private func getAllProducts() async throws -> [Product]{
 //        try await productsCollection
-//            
+//
 //            .getDocuments(as: Product.self)
 //    }
-//    
+//
 //    private func getAllProductsSortedByPrice(descending : Bool) async throws -> [Product]{
 //        try await productsCollection
 //            .order(by: Product.CodingKeys.price.rawValue, descending: descending)
 //            .getDocuments(as: Product.self)
 //    }
-//    
+//
 //    private func getAllProductsForCategory(category : String) async throws -> [Product]{
 //        try await productsCollection
 //        .whereField( Product.CodingKeys.category.rawValue , isEqualTo: category)
 //        .getDocuments(as: Product.self)    }
-//    
+//
 //    private func getAllProductsByPriceAndCategory(descending: Bool, category: String) async throws -> [Product]{
 //        try await productsCollection
 //            .order(by: Product.CodingKeys.price.rawValue, descending: descending)
@@ -136,14 +136,14 @@ final class ProductsManager{
 extension Query{
     
 //    func getDocuments<T>(as: T.Type) async throws -> [T] where T : Decodable{
-//        
+//
 //        let snapshot = try await self.getDocuments()
-//        
+//
 //        return try snapshot.documents.map({document in
 //            try document.data(as: T.self)
 //        })
-//        
-//        
+//
+//
 //    }
     
     func getDocuments<T>(as type: T.Type) async throws -> [T] where T : Decodable{
@@ -164,7 +164,7 @@ extension Query{
         let products =  try snapshot.documents.map({document in
             try document.data(as: T.self)
         })
-        
+    
         return (products, snapshot.documents.last )
         
         
@@ -174,7 +174,7 @@ extension Query{
         guard let lastDocument else{
             return self
         }
-        return self.start(atDocument: lastDocument)
+        return self.start(afterDocument: lastDocument)
     }
     
     func aggregateCount() async throws -> Int{
