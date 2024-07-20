@@ -278,8 +278,81 @@ final class UserManager{
         
     }
     
+    private var userFavoriteProductListener : ListenerRegistration? = nil
+    
+    //Allows us to wait for a data base to change, escaping essentially is how calls can be used later and not immediately
+    func addListenerForAllUserFavoriteProduct (userId : String , completion : @escaping (_ products : [UserFavoriteProduct]) -> Void ){
+        self.userFavoriteProductListener = userFavoriteProductCollection(userId: userId).addSnapshotListener {
+            querySnapshot, error in
+            guard let documents = querySnapshot?.documents else{
+                print("No documents")
+                return
+            }
+            
+            let products : [UserFavoriteProduct] = documents.compactMap{ documentSnapshot in
+                return try? documentSnapshot.data(as: UserFavoriteProduct.self)
+            }
+            completion(products)
+            
+            
+            querySnapshot?.documentChanges.forEach { diff in
+                  if (diff.type == .added) {
+                    print("New product: \(diff.document.data())")
+                  }
+                  if (diff.type == .modified) {
+                    print("Modified product: \(diff.document.data())")
+                  }
+                  if (diff.type == .removed) {
+                    print("Removed product: \(diff.document.data())")
+                  }
+                }
+            
+        }
+        
+        
+    }
+    
+    
+//    func addListenerForAllUserFavoriteProduct (userId : String) ->  AnyPublisher<[UserFavoriteProduct], Error> {
+//        let publisher = PassthroughSubject<[UserFavoriteProduct], Error>()
+//        self.userFavoriteProductListener = userFavoriteProductCollection(userId: userId).addSnapshotListener {
+//            querySnapshot, error in
+//            guard let documents = querySnapshot?.documents else{
+//                print("No documents")
+//                return
+//            }
+//            
+//            let products : [UserFavoriteProduct] = documents.compactMap{ documentSnapshot in
+//                return try? documentSnapshot.data(as: UserFavoriteProduct.self)
+//            }
+//            publisher.send(products)
+//            
+//            
+//        }
+//        return publisher.eraseToAnyPublisher()
+//        
+//        
+//    }
+    
+    
+    func addListenerForAllUserFavoriteProduct (userId : String) ->  AnyPublisher<[UserFavoriteProduct], Error> {
+        let (publisher, listener) = userFavoriteProductCollection(userId: userId)
+            .addSnapShotListener(as: UserFavoriteProduct.self)
+        self.userFavoriteProductListener = listener
+        return publisher
+        
+        
+    }
+    
+    
+    
+    func removeListenerForAllUserFavoriteProduct(){
+        self.userFavoriteProductListener?.remove()
+    }
+    
     
 }
+import Combine
 
 struct UserFavoriteProduct : Codable{
     let id : String
