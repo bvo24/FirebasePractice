@@ -26,6 +26,9 @@
 		9B5E30492C4AEE3C00FB9879 /* OnFirstAppearViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E30482C4AEE3C00FB9879 /* OnFirstAppearViewModifier.swift */; };
 		9B5E304B2C4AEE7200FB9879 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E304A2C4AEE7200FB9879 /* FavoriteViewModel.swift */; };
 		9B5E304D2C4AEED500FB9879 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E304C2C4AEED500FB9879 /* ProductsViewModel.swift */; };
+		9B5E304F2C4D7A3000FB9879 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9B5E304E2C4D7A3000FB9879 /* FirebaseStorage */; };
+		9B5E30522C4D7B2200FB9879 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E30512C4D7B2200FB9879 /* StorageManager.swift */; };
+		9B5E30542C4D7FD200FB9879 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E30532C4D7FD200FB9879 /* ProfileViewModel.swift */; };
 		9B860C3D2C2A055D00F7330B /* FirebasePracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B860C3C2C2A055D00F7330B /* FirebasePracticeApp.swift */; };
 		9B860C3F2C2A055D00F7330B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B860C3E2C2A055D00F7330B /* ContentView.swift */; };
 		9B860C412C2A055E00F7330B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B860C402C2A055E00F7330B /* Assets.xcassets */; };
@@ -64,6 +67,8 @@
 		9B5E30482C4AEE3C00FB9879 /* OnFirstAppearViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnFirstAppearViewModifier.swift; sourceTree = "<group>"; };
 		9B5E304A2C4AEE7200FB9879 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		9B5E304C2C4AEED500FB9879 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		9B5E30512C4D7B2200FB9879 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		9B5E30532C4D7FD200FB9879 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9B860C392C2A055D00F7330B /* FirebasePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B860C3C2C2A055D00F7330B /* FirebasePracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePracticeApp.swift; sourceTree = "<group>"; };
 		9B860C3E2C2A055D00F7330B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 				9B860C612C2F863300F7330B /* GoogleSignIn in Frameworks */,
 				9B5E30102C3ACE7D00FB9879 /* FirebaseFirestoreSwift in Frameworks */,
 				9B860C532C2B144600F7330B /* FirebaseAuth in Frameworks */,
+				9B5E304F2C4D7A3000FB9879 /* FirebaseStorage in Frameworks */,
 				9B860C4E2C2A099E00F7330B /* FirebaseAnalytics in Frameworks */,
 				9B5E300E2C3ACE7D00FB9879 /* FirebaseFirestore in Frameworks */,
 			);
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				9B5E301F2C3AD2AA00FB9879 /* ProfileView.swift */,
+				9B5E30532C4D7FD200FB9879 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -227,6 +234,14 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
+		9B5E30502C4D7B1400FB9879 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				9B5E30512C4D7B2200FB9879 /* StorageManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		9B860C302C2A055D00F7330B = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +262,7 @@
 		9B860C3B2C2A055D00F7330B /* FirebasePractice */ = {
 			isa = PBXGroup;
 			children = (
+				9B5E30502C4D7B1400FB9879 /* Storage */,
 				9B5E30462C4AEE0F00FB9879 /* Components */,
 				9B5E30412C4AED8900FB9879 /* Extensions */,
 				9B5E300A2C3453FC00FB9879 /* FirebasePractice.entitlements */,
@@ -313,6 +329,7 @@
 				9B860C622C2F863300F7330B /* GoogleSignInSwift */,
 				9B5E300D2C3ACE7D00FB9879 /* FirebaseFirestore */,
 				9B5E300F2C3ACE7D00FB9879 /* FirebaseFirestoreSwift */,
+				9B5E304E2C4D7A3000FB9879 /* FirebaseStorage */,
 			);
 			productName = FirebasePractice;
 			productReference = 9B860C392C2A055D00F7330B /* FirebasePractice.app */;
@@ -379,6 +396,7 @@
 				9B860C3F2C2A055D00F7330B /* ContentView.swift in Sources */,
 				9B5E30232C3C464100FB9879 /* UserManager.swift in Sources */,
 				9B5E301D2C3AD10200FB9879 /* SigninEmailViewModel.swift in Sources */,
+				9B5E30542C4D7FD200FB9879 /* ProfileViewModel.swift in Sources */,
 				9B860C3D2C2A055D00F7330B /* FirebasePracticeApp.swift in Sources */,
 				9B860C5C2C2C866200F7330B /* RootView.swift in Sources */,
 				9B5E304B2C4AEE7200FB9879 /* FavoriteViewModel.swift in Sources */,
@@ -394,6 +412,7 @@
 				9B5E30372C46C16D00FB9879 /* FavoriteView.swift in Sources */,
 				9B5E30402C481BBD00FB9879 /* ProductCellViewBuilder.swift in Sources */,
 				9B5E30492C4AEE3C00FB9879 /* OnFirstAppearViewModifier.swift in Sources */,
+				9B5E30522C4D7B2200FB9879 /* StorageManager.swift in Sources */,
 				9B5E300C2C3456D100FB9879 /* SignInAppleHelper.swift in Sources */,
 				9B5E30202C3AD2AA00FB9879 /* ProfileView.swift in Sources */,
 				9B5E30342C46BE8200FB9879 /* TabbarView.swift in Sources */,
@@ -638,6 +657,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9B860C4C2C2A099E00F7330B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		9B5E304E2C4D7A3000FB9879 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B860C4C2C2A099E00F7330B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		9B860C4D2C2A099E00F7330B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
