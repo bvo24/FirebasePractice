@@ -18,7 +18,8 @@ struct FirebasePracticeApp: App {
         WindowGroup {
 //            NavigationStack{
             //RootView()
-            CrashView()
+            //CrashView()
+            PerformanceView()
 //            }
         }
     }
@@ -31,6 +32,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 //    print("FireBase configured")
     return true
   }
+    
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        
+    }
     
     
     
