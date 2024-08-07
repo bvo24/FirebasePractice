@@ -326,18 +326,7 @@ final class UserManager{
             completion(products)
             
             
-            querySnapshot?.documentChanges.forEach { diff in
-                  if (diff.type == .added) {
-                    print("New product: \(diff.document.data())")
-                  }
-                  if (diff.type == .modified) {
-                    print("Modified product: \(diff.document.data())")
-                  }
-                  if (diff.type == .removed) {
-                    print("Removed product: \(diff.document.data())")
-                  }
-                }
-            
+               
         }
         
         
